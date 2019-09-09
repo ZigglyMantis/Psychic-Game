@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Psychic Game</title>
+</head>
+<body>
+    
+    <div class="container">
 
+        <div class="jumbotron">
+            <h1>Psychic Game</h1>
+            <p>guess what letter I'm thinking of</p>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Letter to guess</h2>
+            </div>
+            <div class="panel-body">
+                <h3 class="answer"></h3>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Wins: <span class="numWins"></span>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Loses: <span class="numLoss"></span>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Lives: <span class="numLives"></span>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Letters Guessed: <span class="letGuess"></span>
+            </div>
+        </div>
+        <button id="Begin" class="button button-primary">Start game</button>
+
+    </div>
+
+    <script type="text/javascript">
+    
+    // Variables // 
+        var letterOptions = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        var chosenLetter = "";
+        var winCount = 0;
+        var lossCount = 0;
+        var livesLeft = 9;
+        var wrongGuess = [];
+    // functions and loops //
+    
+
+    function gameStart() {
+        chosenLetter = letterOptions[Math.floor(Math.random() * letterOptions.length)];
+        winCount = 0;
+        lossCount = 0;
+        livesLeft = 0;
+
+    for (var i=0; i<livesLeft; i++) {
+        userGuess.push(wrongGuess);
+    }
+    
+    document.getElementsByClassName("answer")
+    document.getElementsByClassName("numWins")
+    document.getElementsByClassName("numLoss")
+    document.getElementsByClassName("numLives")
+    document.getElementsByClassName("letGuess")
+
+    
+    // game code //
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+
+</body>
+</html>
