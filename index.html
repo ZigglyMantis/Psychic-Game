@@ -13,84 +13,45 @@
 
         <div class="jumbotron">
             <h1>Psychic Game</h1>
-            <p>guess what letter I'm thinking of</p>
+            <p>guess what number I'm thinking of from one to thirty.</p>
+            <p>you have to type the actual number</p>
         </div>
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2 class="panel-title">Letter to guess</h2>
+                <h2 class="panel-title">Number to guess</h2>
             </div>
             <div class="panel-body">
-                <h3 class="answer"></h3>
+                <h3 id="numberToGuess">_ _ _ _ _ _</h3>
             </div>
         </div>
 
         <div class="panel panel-default">
             <div class="panel-body">
-                Wins: <span class="numWins"></span>
+                Wins: <span id="numWins">0</span>
             </div>
         </div>
 
         <div class="panel panel-default">
             <div class="panel-body">
-                Loses: <span class="numLoss"></span>
+                Loses: <span id="numLoss">0</span>
             </div>
         </div>
 
         <div class="panel panel-default">
             <div class="panel-body">
-                Lives: <span class="numLives"></span>
+                Lives: <span id="numLives">9</span>
             </div>
         </div>
 
         <div class="panel panel-default">
             <div class="panel-body">
-                Letters Guessed: <span class="letGuess"></span>
+                Letters Guessed: <span id="lettersGuess"> </span>
             </div>
         </div>
-        <button id="Begin" class="button button-primary">Start game</button>
 
     </div>
 
-    <script type="text/javascript">
-    
-    // Variables // 
-        var letterOptions = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-        var chosenLetter = "";
-        var winCount = 0;
-        var lossCount = 0;
-        var livesLeft = 9;
-        var wrongGuess = [];
-    // functions and loops //
-    
-
-    function gameStart() {
-        chosenLetter = letterOptions[Math.floor(Math.random() * letterOptions.length)];
-        winCount = 0;
-        lossCount = 0;
-        livesLeft = 0;
-
-    for (var i=0; i<livesLeft; i++) {
-        userGuess.push(wrongGuess);
-    }
-    
-    document.getElementsByClassName("answer")
-    document.getElementsByClassName("numWins")
-    document.getElementsByClassName("numLoss")
-    document.getElementsByClassName("numLives")
-    document.getElementsByClassName("letGuess")
-
-    
-    // game code //
-    
-    
-    
-    
-    
-    
-    
-    
-    </script>
-
+    <script src="logic.js"></script>
 </body>
 </html>
