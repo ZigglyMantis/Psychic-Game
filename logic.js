@@ -1,9 +1,7 @@
     // Variables // 
-    var numberOptions = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twentyone","twentytwo","twentythree","twentyfour","twentyfive","twentysix","twentyseven","twentyeight","twentynine","thirty"]
-    var selectedNumber = "";
-    var letterinNumber = [];
-    var numBlanks = 0;
-    var blanksAndCorrect = [];
+    var letterOptions = "abcdefghijklmnopqrstuvwxyz"
+    var selectedLetter = "";
+    var userChoice = "";
     var wrongLetters = [];
 
     //counters//
@@ -12,94 +10,63 @@
     var livesLeft = 9;
 
 // functions and loops //
-
+function onkeyup(pressed) {
+    pressed;
+}
 function gameStart() {
-    selectedNumber = numberOptions[Math.floor(Math.random() * numberOptions.length)];
-    letterinNumber = selectedNumber.split("");
-    numBlanks = letterinNumber.length;
-
+    selectedLetter = letterOptions[Math.floor(Math.random() * letterOptions.length)];
+    
     //counter reseting//
     livesLeft = 9;
-    blanksAndCorrect = [];
     wrongLetters = [];
 
-    //function for blanks//
-    for (var i=0; i<numBlanks; i++) {
-        blanksAndCorrect.push("_");
-    }
+    //function//
 
     //changes to the html//
-    document.getElementById("numberToGuess").innerHTML = blanksAndCorrect.join(" ");
+    // document.getElementById("letterToGuess").innerHTML = selectedLetter;
     document.getElementById("lettersGuess").innerHTML = wrongLetters;
     document.getElementById("numWins").innerHTML = winCount;
     document.getElementById("numLoss").innerHTML = lossCount;
     document.getElementById("numLives").innerHTML = livesLeft;
-
-    //debug//
-    console.log(selectedNumber);
-    console.log(letterinNumber);
-    console.log(numBlanks);
-    console.log(blanksAndCorrect);
 }
-        //more functions for checking//
-function checkNumber(letter) {
-
-    var isLetterInNumber = false;
-    for (var i=0; i<numBlanks; i++){
-        if (selectedNumber[i] == letter) {
-            isLetterInNumber = true;
-        }
+function checkLetter(userChoice){
+    if (userChoice !== selectedLetter) {
+        wrongLetters.push(userChoice);
+        livesLeft--;
     }
-
-    if(isLetterInNumber) {
-        for (var i=0; i<numBlanks; i++){
-            if(selectedNumber[i] == letter) {
-                blanksAndCorrect[i] = letter;
-            }
-        }
-    }
-
-    else {
-        wrongLetters.push(letter);
-        livesLeft--
-    }
-
-    console.log(blanksAndCorrect);
 }
-
 function cycleEnd(){
     console.log("Win Count: " + winCount + " | Loss Count: " + lossCount + " | Lives Left: " + livesLeft);
-    
-    document.getElementById("numLives").innerHTML = livesLeft;
-    document.getElementById("numberToGuess").innerHTML = blanksAndCorrect.join(" ");
-    document.getElementById("lettersGuess").innerHTML = wrongLetters.join(" ");
     //win/loss condition//
-    if (letterinNumber.toString() == blanksAndCorrect.toString()) {
+    console.log("user", userChoice)
+    console.log("text", selectedLetter)
+    if (userChoice === selectedLetter) {
         winCount++;
-        alert("You guessed the number!");
+        alert("You guessed the letter!");
 
         document.getElementById("numWins").innerHTML = winCount;
     
         gameStart();
     }
 
-    else if (livesLeft == 0) {
+    else if (livesLeft === 0) {
         lossCount++;
-        alert("You failed to guess the number :C");
+        alert("You failed to guess the letter :C");
 
         document.getElementById("numLoss").innerHTML = lossCount;
     
         gameStart();
     }
 }
+
 // game code //
 gameStart();
 
 document.onkeyup = function(event) {
-    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
-    checkNumber(letterGuessed);
-    cycleEnd;
-    
-    //more debug//
-    console.log(letterGuessed);
+    userChoice = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetter(userChoice);
+    document.getElementById("numLives").innerHTML = livesLeft;
+    // document.getElementById("letterToGuess").innerHTML = selectedLetter;
+    document.getElementById("lettersGuess").innerHTML = wrongLetters;
+    cycleEnd();
 }
