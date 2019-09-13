@@ -1,4 +1,4 @@
-    // Variables // 
+// Variables // 
     var letterOptions = "abcdefghijklmnopqrstuvwxyz"
     var selectedLetter = "";
     var userChoice = "";
@@ -30,9 +30,13 @@ function gameStart() {
     document.getElementById("numLives").innerHTML = livesLeft;
 }
 function checkLetter(userChoice){
+    if (!(letterOptions.includes(userChoice)) || (wrongLetters.includes(userChoice))) {
+        alert("Wrong key pressed, try agian.")
+    } else {
     if (userChoice !== selectedLetter) {
         wrongLetters.push(userChoice);
         livesLeft--;
+        }
     }
 }
 function cycleEnd(){
